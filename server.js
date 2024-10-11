@@ -29,7 +29,18 @@ app.use("/api/note/sugg", noteSuggRoute);
 app.use("*", (req, res, next) => {
   next(new ApiError("this route not found", 404));
 });
+
 app.use(globalError);
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/client/build")));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("Api is running...");
+  });
+}
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`server running at port ${PORT}...`);
