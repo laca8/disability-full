@@ -1,7 +1,7 @@
 {
   "scripts": {
     "server": "nodemon server",
-    "build": "npm install vite --save-dev && cd clients && npm install vite --save-dev && npm run build",
+    "build": "npm install  && cd clients && npm install && npm run build",
     "client": "npm run dev --prefix clients",
     "dev": "concurrently \"npm run server \" \"npm run client\""
   },
