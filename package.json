@@ -1,8 +1,8 @@
 {
   "scripts": {
     "server": "nodemon server",
-    "build": "npm install && cd client && npm install && npm run build",
-    "client": "npm start --prefix client",
+    "build": "npm install && cd clients && npm install && npm run build",
+    "client": "npm run dev --prefix clients",
     "dev": "concurrently \"npm run server \" \"npm run client\""
   },
   "description": "",
